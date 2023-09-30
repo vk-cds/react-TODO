@@ -1,0 +1,134 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    box-sizing: border-box;
+  }
+
+body{
+    background-color: rgb(36, 33, 33);
+    padding: 1rem;
+    color: aliceblue;
+    margin: 0 auto;
+    max-width: 400px;
+}
+
+
+.new-item-form{
+    display: flex;
+    flex-direction: column;
+    gap:0.5rem;
+}
+
+.form-row{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.new-item-form input{
+    outline: none;
+    border-radius: 10px;
+    background-color:rgba(17, 126, 235, 0.992) ;
+    border: 1px solid rgba(17, 126, 235, 0.992);
+    color: white;
+    padding: 5px;
+}
+
+.btn{
+    border-color: rgba(17, 126, 235, 0.992);
+    border-radius: 10px;
+    color: rgba(17, 126, 235, 0.992);
+    background-color: rgb(36, 33, 33);
+    padding: 5px;
+  outline: none;
+ cursor: pointer;
+}
+
+.header {
+    font-size: 1.5rem;
+    margin-top: 1.5rem;
+    margin-bottom: 0.5rem;
+  }
+  .list{
+    /* remove dot and keep little margin */
+      list-style: none;  
+      padding: 0;
+      margin: 0;
+      margin-left: 10px;  
+      
+      /* list has li inside (item1,item2) to keep space between them use flex */
+    display: flex;
+    flex-direction: column;
+    gap: 0.3rem;
+
+}
+
+/* li has label and button use display flex ,gap,alignitems to keep space btween them */
+.list li{
+    display: flex;
+    gap: 0.3rem;
+    align-items: center;
+}
+
+/* label has checkbox and label, use display flex to keep space between them */
+.list li label{
+    display: flex;
+    gap: 5px;
+    align-items: center;
+    cursor: pointer;
+}
+
+
+/* check if input ccheckbox ix checked by has , then change color of label */
+.list li:has(input:checked) label{
+    color: grey;
+}
+
+
+  /* for buttons firstly remove outline, put colors for bg and font, border, borderrraduis  */
+.delete{
+    outline:none;
+    background-color: transparent;
+    color: red;
+    border: 1px solid red;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+ 
+  /* now removing existing checkbox coz it doesnt look good  */
+  /* to remove the checkbox we need to diable its appearance , pointer events ,and set its position to absolute  */
+  .list li input{
+    outline: none;
+    pointer-events: none;
+    appearance: none;
+    position: absolute;
+    width: 0;
+    height: 0;
+}
+/* create a checkbox before label using content" " display block ,set the width height ,color */
+.list li label::before{
+    content:"";
+    display: block;
+    width: 11px;
+    height: 11px;
+    background-color: white;
+    border-radius: 1px;
+
+    /* use this for the tickmark later  */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+}
+
+.list li label:hover::before {
+    background: hsl(200, 100%, 80%);
+  }
+
+
+  .list li:has(input:checked) label::before{
+    content: "✔";
+    color: white;
+    font-size: 0.7rem;
+    font-style: bold;
+    background: rgba(17, 126, 235, 0.992);;
+  }
